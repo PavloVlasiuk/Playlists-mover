@@ -1,6 +1,7 @@
 "use strict";
 
 export const youtubeController = (() => {
+  // returns an array of objects that include name of the track and artist
   const _getPlaylistItems = async (token, playlistId) => {
     const requestParameters = {
       part: "snippet%2CcontentDetails",
@@ -23,7 +24,13 @@ export const youtubeController = (() => {
 
     const playlistData = await request.json();
 
-    return playlistData;
+    return playlistData.items.map((item) => {
+      let artist = item.snippet.videoOwnerChannelTitle;
+      return {
+        track: item.snippet.title,
+        artist: artist.slice(0, artist.lastIndexOf("-") - 1),
+      };
+    });
   };
 
   return {
