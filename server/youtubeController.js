@@ -2,13 +2,14 @@
 
 export const youtubeController = (() => {
   // returns an array of objects that include name of the track and artist
-  const _getPlaylistItems = async (token, playlistId) => {
+  const _getPlaylistItems = async (apiKey, playlistId) => {
     const requestParameters = {
       part: "snippet%2CcontentDetails",
       playlistId,
+      apiKey,
 
       toString() {
-        return `part=${this.part}&playlistId=${this.playlistId}`;
+        return `part=${this.part}&playlistId=${this.playlistId}&key=${this.apiKey}`;
       },
     };
 
@@ -16,9 +17,6 @@ export const youtubeController = (() => {
       `https://www.googleapis.com/youtube/v3/playlistItems?${requestParameters}`,
       {
         method: "GET",
-        headers: {
-          Authorization: "Bearer " + token,
-        },
       }
     );
 
