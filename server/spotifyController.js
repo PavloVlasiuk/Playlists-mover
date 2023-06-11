@@ -83,12 +83,20 @@ export const spotifyController = (() => {
   };
 
   return {
-    getUserId: _getUserId,
+    getUserId(token) {
+      return _getUserId(token);
+    },
 
-    createPlaylist: _createPlaylist,
+    createPlaylist(token, userId, playlistName) {
+      return _createPlaylist(token, userId, playlistName);
+    },
 
-    searchTracks: _searchTracks,
+    searchTracks(token, tracks) {
+      return _searchTracks(token, tracks);
+    },
 
-    addTracksToPlaylist: _addTracksToPlaylist,
+    addTracksToPlaylist(token, playlistId, trackUris){
+      return _addTracksToPlaylist(token, playlistId, trackUris)
+    },
   };
 })();

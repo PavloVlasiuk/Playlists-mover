@@ -32,7 +32,9 @@ export const youtubeController = (() => {
   };
 
   return {
-    getPlaylistItems: _getPlaylistItems,
+    getPlaylistItems(apiKey, playlistId) {
+      return _getPlaylistItems(apiKey, playlistId);
+    },
   };
   
 })();
