@@ -1,7 +1,6 @@
 "use strict";
 
 import { toURLPage } from "../pages/urlPage.js";
-import { API_KEY } from "../../server/configs/apiKey.js";
 import { spotifyController } from "../../server/spotifyController.js";
 import { youtubeController } from "../../server/youtubeController.js";
 import { toAuthSpotify } from "../pages/authSpotify.js";
@@ -27,7 +26,7 @@ const handleInputKeyup = (event) => {
     const playlistId = params.searchParams.get("list");
 
     localStorage.clear();
-    
+
     if (playlistId !== null) {
       localStorage.setItem("playlistId", playlistId);
     } else throw new Error("Invalid url");
@@ -42,10 +41,7 @@ document.addEventListener("keyup", async (event) => {
     handleInputKeyup(event);
 
     const playlistId = window.localStorage.getItem("playlistId");
-    const tracks = await youtubeController.getPlaylistItems(
-      API_KEY,
-      playlistId
-    );
+    const tracks = await youtubeController.getPlaylistItems(playlistId);
     localStorage.setItem("tracks", JSON.stringify(tracks));
     console.log(localStorage.getItem("tracks"));
     toAuthSpotify();

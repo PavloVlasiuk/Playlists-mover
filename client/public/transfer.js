@@ -2,15 +2,14 @@
 
 import { spotifyController } from "../../server/spotifyController.js";
 
+
 const body = document.querySelector(".transfer");
 console.log(localStorage.getItem("tracks"));
 
-body.addEventListener("click", async (event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
   const queryParams = window.location.search;
   const urlParams = new URLSearchParams(queryParams);
   const code = urlParams.get("code");
-
-  alert("alert");
 
   const token = await spotifyController.getAccessToken(code);
   console.log(token);

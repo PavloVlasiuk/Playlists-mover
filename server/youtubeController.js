@@ -1,21 +1,22 @@
 "use strict";
 
+import { API_KEY, BASE_URL } from "./configs/ytParams.js";
+
 export const youtubeController = (() => {
   // returns an array of objects that include name of the track and artist
-  const _getPlaylistItems = async (apiKey, playlistId) => {
+  const _getPlaylistItems = async (playlistId) => {
     const requestParameters = {
       maxResults: 50,
       part: "snippet%2CcontentDetails",
       playlistId,
-      apiKey,
 
       toString() {
-        return `maxResults=${this.maxResults}&part=${this.part}&playlistId=${this.playlistId}&key=${this.apiKey}`;
+        return `maxResults=${this.maxResults}&part=${this.part}&playlistId=${this.playlistId}&key=${API_KEY}`;
       },
     };
 
     const request = await fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?${requestParameters}`,
+      `${BASE_URL}/playlistItems?${requestParameters}`,
       {
         method: "GET",
       }
@@ -33,8 +34,10 @@ export const youtubeController = (() => {
   };
 
   return {
-    getPlaylistItems(apiKey, playlistId) {
-      return _getPlaylistItems(apiKey, playlistId);
+    getPlaylistItems(playlistId) {
+      return _getPlaylistItems(playlistId);
     },
   };
 })();
+
+console.log(await youtubeController.getPlaylistItems("PLbcKsGBpdBC4h0d3F-d0lF2bwnvjOp6pE"));
