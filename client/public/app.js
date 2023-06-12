@@ -2,7 +2,9 @@
 
 import { toURLPage } from "../pages/urlPage.js";
 import { API_KEY } from "../../server/configs/apiKey.js";
+import { spotifyController } from "../../server/spotifyController.js";
 import { youtubeController } from "../../server/youtubeController.js";
+import { toAuthSpotify } from "../pages/authSpotify.js";
 
 const startButton = document.querySelector("#start-button");
 
@@ -24,8 +26,10 @@ const handleInputKeyup = (event) => {
     const params = new URL(url);
     const playlistId = params.searchParams.get("list");
 
+    localStorage.clear();
+    
     if (playlistId !== null) {
-      window.localStorage.setItem("playlistId", playlistId);
+      localStorage.setItem("playlistId", playlistId);
     } else throw new Error("Invalid url");
   } catch (e) {
     console.log(e);
@@ -38,11 +42,18 @@ document.addEventListener("keyup", async (event) => {
     handleInputKeyup(event);
 
     const playlistId = window.localStorage.getItem("playlistId");
-    console.log(playlistId);
     const tracks = await youtubeController.getPlaylistItems(
       API_KEY,
       playlistId
     );
-    console.log(tracks);
+    localStorage.setItem("tracks", JSON.stringify(tracks));
+    console.log(localStorage.getItem("tracks"));
+    toAuthSpotify();
+  }
+});
+
+document.addEventListener("click", async (event) => {
+  if (event.target.matches("#auth-spotify")) {
+    window.location.href = spotifyController.makeRequestURL();
   }
 });

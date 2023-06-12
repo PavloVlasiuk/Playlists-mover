@@ -1,8 +1,7 @@
 'use strict';
 
 export const toURLPage = () => {
-  const main = document.querySelector("main");
-  main.innerHTML = `
+  document.querySelector("main").innerHTML = `
   <input id="input-url">
   `;
 }
