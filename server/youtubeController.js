@@ -4,12 +4,13 @@ export const youtubeController = (() => {
   // returns an array of objects that include name of the track and artist
   const _getPlaylistItems = async (apiKey, playlistId) => {
     const requestParameters = {
+      maxResults: 50,
       part: "snippet%2CcontentDetails",
       playlistId,
       apiKey,
 
       toString() {
-        return `part=${this.part}&playlistId=${this.playlistId}&key=${this.apiKey}`;
+        return `maxResults=${this.maxResults}&part=${this.part}&playlistId=${this.playlistId}&key=${this.apiKey}`;
       },
     };
 
@@ -36,5 +37,4 @@ export const youtubeController = (() => {
       return _getPlaylistItems(apiKey, playlistId);
     },
   };
-  
 })();

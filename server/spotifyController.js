@@ -1,6 +1,37 @@
-"use strict";
+'use strict';
+
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "./configs/spotifyCredentials.js";
+import * as params from "./configs/spotifyParams.js";
 
 export const spotifyController = (() => {
+  //creates url to get code for obtaining access token
+  const _makeRequestURL = () => {
+    let url = params.AUTH_URL;
+    url += "client_id=" + SPOTIFY_CLIENT_ID;
+    url += "&response_type=code";
+    url += "&redirect_uri=" + params.REDIRECT_URI;
+    url += "&show_dialog=true";
+    url += "&scope=" + encodeURIComponent(params.SCOPES.join(" "));
+    console.log(url);
+    return url;
+  };
+
+  //returns access token for using API
+  const _getAccessToken = async (code) => {
+    const request = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Basic " + btoa(SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET)
+      },
+      body: `grant_type=authorization_code&code=${code}&redirect_uri=${params.REDIRECT_URI}`
+    });
+
+    const tokenObj = await request.json();
+
+    return tokenObj;
+  };
+
   //returns an ID of current user
   const _getUserId = async (token) => {
     const request = await fetch("https://api.spotify.com/v1/me", {
@@ -11,6 +42,7 @@ export const spotifyController = (() => {
     });
 
     const userData = await request.json();
+    console.log(userData);
     return userData.id;
   };
 
@@ -83,6 +115,14 @@ export const spotifyController = (() => {
   };
 
   return {
+    makeRequestURL() {
+      return _makeRequestURL();
+    },
+
+    getAccessToken(code) {
+      return _getAccessToken(code);
+    },
+
     getUserId(token) {
       return _getUserId(token);
     },
