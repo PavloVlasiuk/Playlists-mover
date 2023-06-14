@@ -1,16 +1,18 @@
 * {
   font-family: "Outfit", sans-serif;
 }
-body {
+
+.home-body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  background-image: url("background.png");
+  background-image: url("images/background.png");
   background-position: 0, -100%;
   height: 100vh;
   width: 100%;
   background-size: cover;
 }
+
 .menu-list {
   list-style-type: none;
   margin: 0;
@@ -20,17 +22,21 @@ body {
   flex-direction: row;
   align-items: center;
 }
+
 header {
   margin-left: 20px;
 }
+
 main {
   margin-top: 20px;
   margin-left: 20px;
   flex-grow: 1;
 }
+
 .menu-item {
   font-size: 20px;
 }
+
 .menu-link::after {
   content: "";
   display: block;
@@ -54,6 +60,7 @@ main {
   margin-right: auto;
   padding: 0;
 }
+
 .menu-link {
   color: black;
   font-size: medium;
@@ -74,12 +81,13 @@ main {
   width: 50%;
   margin-bottom: 30px;
 }
+
 .main-content {
   margin-left: 40px;
 }
 
 .description {
-  font-size: 18dpx;
+  font-size: 18px;
   color: rgba(0, 0, 0, 0.6);
   width: 45%;
 }
@@ -95,16 +103,17 @@ main {
   margin: 40px 0;
   transition: color 0.2s ease-out 0.2s;
 }
+
 #start-button:hover {
   background-color: #1f1f1f;
   cursor: pointer;
   animation: pulse 3s infinite;
   color: lime;
 }
+
 @keyframes pulse {
   0% {
     color: rgb(255, 0, 0);
-    text-shadow: white 2px;
   }
   25% {
     color: white;
@@ -117,9 +126,9 @@ main {
   }
   100% {
     color: rgb(255, 0, 0);
-    text-shadow: white 2px;
   }
 }
+
 #start-button:active {
   background-color: #323232;
 }
