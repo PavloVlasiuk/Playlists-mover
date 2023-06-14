@@ -2,7 +2,7 @@
 
 const requestURL = "http://localhost:5000/storage";
 
-const storage = (() => {
+export const storage = (() => {
   const _getData = async () => {
     const request = await fetch(requestURL, {
       method: "GET",
@@ -13,7 +13,7 @@ const storage = (() => {
 
     const data = await request.json();
 
-    return data;
+    return data.items;
   };
 
   const _setData = async (data) => {
