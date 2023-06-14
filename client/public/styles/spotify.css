@@ -2,11 +2,11 @@
   font-family: "Outfit", sans-serif;
 }
 
-.home-body {
+body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  background-image: url("images/background.png");
+  background-image: url("images/background2.png");
   background-position: 0, -100%;
   height: 100vh;
   width: 100%;
@@ -27,12 +27,6 @@ header {
   margin-left: 20px;
 }
 
-main {
-  margin-top: 20px;
-  margin-left: 20px;
-  flex-grow: 1;
-}
-
 .menu-item {
   font-size: 20px;
 }
@@ -48,7 +42,7 @@ main {
 
 .menu-link:hover::after {
   width: 100%;
-  transition: width 0.3s;
+  transition: width .3s;
 }
 
 .first {
@@ -72,63 +66,69 @@ main {
   margin-left: 50px;
 }
 
-.welcome-header {
-  font-size: 34px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  word-wrap: unset;
+.content-flow {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: auto;
+  width: 500px;
+  height: 450px;
+  background: #FFFFFF;
+  border: 5px solid #4E35EB;
+  border-radius: 90px;
+  box-shadow: -30px 10px 5px #4E35EB;
+}
+
+.flow-header {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 90px;
   color: black;
-  width: 50%;
-  margin-bottom: 30px;
+  font-size: 35px;
 }
 
-.main-content {
-  margin-left: 40px;
+.playlist-url {
+  display: flex;
+  align-self: center;
+  color: black;
+  width: 70%;
+  text-align: left;
+  border: 3px solid #4E35EB;
+  border-radius: 10px;
+  height: 40px;
+  padding: 10px;
 }
 
-.description {
-  font-size: 18px;
-  color: rgba(0, 0, 0, 0.6);
-  width: 45%;
+.youtube-logo {
+  margin-top: 12px;
+  padding: 29px;
+  height: 100px;
+  width: 320px;
 }
 
-#start-button {
+#playlist-button {
   color: white;
-  border: none;
-  background-color: #000000;
-  padding: 20px 35px;
+  border: 3px solid white;
+  border-radius: 30px;
+  background-color: #1ed760;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 40px 0;
-  transition: color 0.2s ease-out 0.2s;
+  width: 240px;
+  height: 62px;
+  margin: auto;
+  margin-top: 4px;
+  font-size: 20px;
 }
 
-#start-button:hover {
-  background-color: #1f1f1f;
+#playlist-button:hover {
+  background-color: #6ef59e;
   cursor: pointer;
   animation: pulse 3s infinite;
-  color: lime;
+  color: white;
 }
 
-@keyframes pulse {
-  0% {
-    color: rgb(255, 0, 0);
-  }
-  25% {
-    color: white;
-  }
-  50% {
-    color: lime;
-  }
-  75% {
-    color: white;
-  }
-  100% {
-    color: rgb(255, 0, 0);
-  }
-}
-
-#start-button:active {
+#playlist-button:active {
   background-color: #323232;
 }

@@ -1,13 +1,12 @@
 "use strict";
 
-import { toURLPage } from "../pages/urlPage.js";
-import { spotifyController } from "../../server/spotifyController.js";
-import { youtubeController } from "../../server/youtubeController.js";
-import { toAuthSpotify } from "../pages/authSpotify.js";
+import {spotifyController} from "../../server/spotifyController.js";
+import {youtubeController} from "../../server/youtubeController.js";
+import {toAuthSpotify} from "../pages/authSpotify.js";
 
 const startButton = document.querySelector("#start-button");
 
-startButton.addEventListener("click", () => toURLPage());
+startButton.addEventListener("click", () => window.location.href = "../pages/youtube-music.html");
 
 const validateURL = (url) => {
   const pattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/.*)?$/;
