@@ -1,0 +1,54 @@
+.content-flow-spotify {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  margin: auto;
+  width: 500px;
+  height: 450px;
+  background: #FFFFFF;
+  border: 5px solid #4E35EB;
+  border-radius: 90px;
+  box-shadow: -30px 10px 5px #4E35EB;
+}
+
+.flow-header-spotify {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 90px;
+  color: black;
+  font-size: 35px;
+}
+
+.spotify-logo {
+  margin-top: 12px;
+  padding: 29px;
+  height: 100px;
+  width: 320px;
+}
+
+#access-button {
+  color: white;
+  border: 3px solid white;
+  border-radius: 30px;
+  background-color: #1ed760;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 240px;
+  height: 62px;
+  margin: auto;
+  margin-top: 4px;
+  font-size: 20px;
+}
+
+#access-button:hover {
+  background-color: #6ef59e;
+  cursor: pointer;
+  animation: pulse 3s infinite;
+  color: white;
+}
+
+#access-button:active {
+  background-color: #323232;
+}
