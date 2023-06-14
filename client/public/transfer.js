@@ -1,6 +1,6 @@
 "use strict";
 
-import {spotifyController} from "../../server/spotifyController.js";
+import { spotifyController } from "../../server/spotifyController.js";
 
 
 const body = document.querySelector(".transfer");
