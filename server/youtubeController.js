@@ -1,6 +1,7 @@
 "use strict";
 
 import { API_KEY, BASE_URL } from "./configs/ytParams.js";
+import { checkResponseStatus } from "./utils/errors.js";
 
 export const youtubeController = (() => {
   // returns an array of objects that include name of the track and artist
@@ -15,22 +16,29 @@ export const youtubeController = (() => {
       },
     };
 
-    const request = await fetch(
-      `${BASE_URL}/playlistItems?${requestParameters}`,
-      {
-        method: "GET",
-      }
-    );
+    try {
+      const response = await fetch(
+        `${BASE_URL}/playlistItems?${requestParameters}`,
+        {
+          method: "GET",
+        }
+      );
 
-    const playlistData = await request.json();
+      checkResponseStatus(response);
 
-    return playlistData.items.map((item) => {
-      let artist = item.snippet.videoOwnerChannelTitle;
-      return {
-        track: item.snippet.title,
-        artist: artist.slice(0, artist.lastIndexOf("-") - 1),
-      };
-    });
+      const playlistData = await response.json();
+
+      return playlistData.items.map((item) => {
+        let artist = item.snippet.videoOwnerChannelTitle;
+        return {
+          track: item.snippet.title,
+          artist: artist.slice(0, artist.lastIndexOf("-") - 1),
+        };
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return {
@@ -40,4 +48,3 @@ export const youtubeController = (() => {
   };
 })();
 
-console.log(await youtubeController.getPlaylistItems("PLbcKsGBpdBC4h0d3F-d0lF2bwnvjOp6pE"));
