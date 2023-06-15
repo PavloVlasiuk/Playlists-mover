@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="../public/styles/youtube-music.css">
+  <link rel="stylesheet" href="../public/styles/spotify.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit">
 
-  </link>
   <title>Music Playlist Mover</title>
 </head>
 
@@ -31,15 +32,18 @@
     </ul>
   </nav>
 </header>
-<div class="content-flow">
-  <img class="youtube-logo" src="../public/styles/images/youtube-music.png"/>
-  <h3 class="flow-header">
-    Youtube Music Playlist
-  </h3>
-  <input class="playlist-url" placeholder="Please copy and paste the URL of the YouTube Music playlist here" class="link-field"/>
-  <button id="playlist-button">Load</button>
-
-</div>
+<main>
+  <div class="content-flow">
+    <img class="youtube-logo" src="../public/styles/images/youtube-music.png"/>
+    <h3 class="flow-header">
+      Youtube Music Playlist
+    </h3>
+    <input class="playlist-url" placeholder="Please copy and paste the URL of the YouTube Music playlist here"
+           class="link-field"/>
+    <button id="playlist-button">Load</button>
+    <div class="invalid-url-box"></div>
+  </div>
+</main>
 <script src="../scripts/youtube-music.js" type="module"></script>
 </body>
 
