@@ -19,7 +19,7 @@ const validateURL = (url) => {
   }
 };
 
-const getURLParam = (url, param) => {
+export const getURLParam = (url, param) => {
   const params = new URL(url);
   return params.searchParams.get(param);
 };
