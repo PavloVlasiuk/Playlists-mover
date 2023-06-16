@@ -1,0 +1,75 @@
+* {
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-image: url("images/background2.png");
+  background-position: 0, -100%;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+}
+
+.menu-list {
+  list-style-type: none;
+  margin: 0;
+  margin-right: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+header {
+  margin-left: 20px;
+}
+
+.menu-item {
+  font-size: 20px;
+}
+
+.menu-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.3s;
+}
+
+.menu-link:hover::after {
+  width: 100%;
+  transition: width .3s;
+}
+
+.first {
+  justify-self: flex-start;
+  margin-left: 0;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  font-weight: normal;
+  margin-right: auto;
+  padding: 0;
+}
+
+.menu-link {
+  color: black;
+  font-size: medium;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  padding: 10px 15px;
+  margin-left: 50px;
+}
+.profile-pics{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: flex-end;
+}
