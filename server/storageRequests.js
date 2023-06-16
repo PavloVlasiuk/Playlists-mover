@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-const requestURL = "http://localhost:5000/storage";
+const requestURL = 'http://localhost:5000/storage';
 
 export const storage = (() => {
   const _getData = async () => {
     const request = await fetch(requestURL, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -18,7 +18,7 @@ export const storage = (() => {
 
   const _setData = async (data) => {
     const request = await fetch(requestURL, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(data),
     });
 
@@ -29,7 +29,7 @@ export const storage = (() => {
 
   const _deleteData = async () => {
     const request = await fetch(requestURL, {
-      method: "DELETE",
+      method: 'DELETE',
     });
 
     const responseStatus = await request.json();

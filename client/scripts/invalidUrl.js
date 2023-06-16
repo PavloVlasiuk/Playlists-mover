@@ -1,6 +1,6 @@
 'use strict';
 
-const messageBox = document.querySelector(".invalid-url-box");
+const messageBox = document.querySelector('.invalid-url-box');
 
 export const showMessage = () => {
   messageBox.innerHTML = `
@@ -11,6 +11,5 @@ export const showMessage = () => {
 };
 
 export const hideMessage = () => {
-  messageBox.innerHTML = "";
+  messageBox.innerHTML = '';
 };
-
