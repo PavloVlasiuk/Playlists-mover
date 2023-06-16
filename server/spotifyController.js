@@ -107,8 +107,12 @@ export const spotifyController = (() => {
       );
 
     return Promise.all(requests)
-      .then((responses) => Promise.all(responses.map((r) => r.json())))
-      .then((items) => items.map((item) => item.tracks.items[0].uri))
+      .then((responses) => Promise.all(responses.map((res) => res.json())))
+      .then((items) =>
+        items
+          .filter((item) => item.tracks.items.length > 0)
+          .map((item) => item.tracks.items[0].uri)
+      )
       .catch((error) => console.log(error));
   };
 
