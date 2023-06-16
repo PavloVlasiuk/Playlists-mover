@@ -124,7 +124,6 @@ header {
   cursor: pointer;
   animation: pulse 3s infinite;
   color: white;
-  border: 3px solid black;
 }
 
 #playlist-button:active {
