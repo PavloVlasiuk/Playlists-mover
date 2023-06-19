@@ -1,33 +1,33 @@
-"use strict";
+'use strict';
 
 import {
   SPOTIFY_CLIENT_ID,
   SPOTIFY_CLIENT_SECRET,
-} from "./configs/spotifyCredentials.js";
-import * as params from "./configs/spotifyParams.js";
-import { checkResponseStatus } from "./utils/errors.js";
+} from './configs/spotifyCredentials.js';
+import * as params from './configs/spotifyParams.js';
+import { checkResponseStatus } from './utils/errors.js';
 
 export const spotifyController = (() => {
   //creates url to get code for obtaining access token
   const _makeRequestURL = () => {
     let url = params.AUTH_URL;
-    url += "client_id=" + SPOTIFY_CLIENT_ID;
-    url += "&response_type=code";
-    url += "&redirect_uri=" + params.REDIRECT_URI;
-    url += "&show_dialog=true";
-    url += "&scope=" + encodeURIComponent(params.SCOPES.join(" "));
+    url += 'client_id=' + SPOTIFY_CLIENT_ID;
+    url += '&response_type=code';
+    url += '&redirect_uri=' + params.REDIRECT_URI;
+    url += '&show_dialog=true';
+    url += '&scope=' + encodeURIComponent(params.SCOPES.join(' '));
     return url;
   };
 
   //returns access token for using API
   const _getAccessToken = async (code) => {
     try {
-      const response = await fetch("https://accounts.spotify.com/api/token", {
-        method: "POST",
+      const response = await fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          'Content-Type': 'application/x-www-form-urlencoded',
           Authorization:
-            "Basic " + btoa(SPOTIFY_CLIENT_ID + ":" + SPOTIFY_CLIENT_SECRET),
+            'Basic ' + btoa(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET),
         },
         body: `grant_type=authorization_code&code=${code}&redirect_uri=${params.REDIRECT_URI}`,
       });
@@ -44,10 +44,10 @@ export const spotifyController = (() => {
   //returns an ID of current user
   const _getUserId = async (token) => {
     try {
-      const response = await fetch("https://api.spotify.com/v1/me", {
-        method: "GET",
+      const response = await fetch('https://api.spotify.com/v1/me', {
+        method: 'GET',
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization: 'Bearer ' + token,
         },
       });
 
@@ -64,16 +64,16 @@ export const spotifyController = (() => {
   const _createPlaylist = async (token, userId, playlistName) => {
     const requstBody = {
       name: playlistName,
-      public: "true",
+      public: 'true',
     };
     try {
       const response = await fetch(
         `https://api.spotify.com/v1/users/${userId}/playlists`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "application/json",
+            Authorization: 'Bearer ' + token,
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(requstBody),
         }
@@ -91,9 +91,9 @@ export const spotifyController = (() => {
   //searches songs by name and artist and returns an array of uris
   const _searchTracks = async (token, tracks) => {
     const headers = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: 'Bearer ' + token,
       },
     };
 
@@ -125,10 +125,10 @@ export const spotifyController = (() => {
       const response = await fetch(
         `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "application/json",
+            Authorization: 'Bearer ' + token,
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(requestBody),
         }
