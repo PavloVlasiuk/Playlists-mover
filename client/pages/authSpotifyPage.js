@@ -1,7 +1,7 @@
 'use strict';
 
 export const toAuthSpotify = () => {
-  document.querySelector("main").innerHTML = `
+  document.querySelector('main').innerHTML = `
     <div class="content-flow-spotify">
       <img class="spotify-logo" src="../public/styles/images/spotify.png"/>
       <h3 class="flow-header-spotify">
